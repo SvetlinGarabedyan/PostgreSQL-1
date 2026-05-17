@@ -2,106 +2,106 @@
 Databases Introduction. Data Definition and Datatypes.
 - Едно е само да съхраняваме данни, друго е вече да ги менижираме
 
-- Проблема с flat storage (файлове)
+1. Проблема с flat storage (файлове)
 - Размер
-Сложност на ъпдейтване
-Точност
-Кой има достъп
-Какво е DBMS
-DataBase Management System
-Система оптимизирана за търсене и обработване на данни
-Нямаме директен достъп до файловете, DBMS се грижи за товa
-Ние пускаме заявка към engine-a, еngine-a обработва заявката взима от файовете и връща на нас.
-Работим по TCP/IP протокола, но върху локалната машина;
-RDBMS - данните и engine-a; Relational Database Management System;
-SQL/NoSQL
-Ползваме SQL, когато скалираме вертикално(upgrade на машината)
-Ползваме NoSQL, когато скалираме хоризонатлно(нова машина)
-Идеята на SQL синтаксиса е да е като изречение
+- Сложност на ъпдейтване
+- Точност
+- Кой има достъп
+2. Какво е DBMS
+- DataBase Management System
+- Система оптимизирана за търсене и обработване на данни
+- Нямаме директен достъп до файловете, DBMS се грижи за товa
+- Ние пускаме заявка към engine-a, еngine-a обработва заявката взима от файовете и връща на нас.
+- Работим по TCP/IP протокола, но върху локалната машина;
+- RDBMS - данните и engine-a; Relational Database Management System;
+3. SQL/NoSQL
+- Ползваме SQL, когато скалираме вертикално(upgrade на машината)
+- Ползваме NoSQL, когато скалираме хоризонатлно(нова машина)
+=> Идеята на SQL синтаксиса е да е като изречение
 
-Части на една заявка
-Заявки - ALTER TABLE, ALTER COLUMNN, SELECT...
-Клаузи - update/delete и тн
-Изрази - salary * 1.1
-Предикати - job_title = "Cashier"
-Стейтмънти - Update Set Where, целия израз
-Логически разделен на 4 категории
-Data Definition - описваме какви са нашите данни, как изглеждат данните, как са обвързани, как ще изглежда нашата схема
-Data Manipulation - READ/CREATE/UPDATE/DELETE
-Data Control - контрол върху правата или кой има достъп до данните
-Transaction Control - дали да пуснем заявките като група, тоест изпълняват се всички или нито една.
-Защо ни трябват релации
-Получваме абстракция, гъвкавост и не повтаряме информация
-Нямаме празни записи (има случаи, в които е окей да имаме празни записи. Пример за презиме, защото човек има само едно такова и не е задължително)
-Ключове
-Primary - винаги уникални
-Foreign
-Entity/Relation диаграма
-можем да виждаме схемите и връзките между таблиците
-Типове данни
-INT - small/int/big
+4. Части на една заявка
+- Заявки - ALTER TABLE, ALTER COLUMNN, SELECT...
+- Клаузи - update/delete и тн
+- Изрази - salary * 1.1
+- Предикати - job_title = "Cashier"
+- Стейтмънти - Update Set Where, целия израз
+5. Логически разделен на 4 категории
+- Data Definition - описваме какви са нашите данни, как изглеждат данните, как са обвързани, как ще изглежда нашата схема
+- Data Manipulation - READ/CREATE/UPDATE/DELETE
+- Data Control - контрол върху правата или кой има достъп до данните
+- Transaction Control - дали да пуснем заявките като група, тоест изпълняват се всички или нито една.
+6. Защо ни трябват релации
+- Получваме абстракция, гъвкавост и не повтаряме информация
+- Нямаме празни записи (има случаи, в които е окей да имаме празни записи. Пример за презиме, защото човек има само едно такова и не е задължително)
+7. Ключове
+- Primary - винаги уникални
+- Foreign
+8. Entity/Relation диаграма
+- можем да виждаме схемите и връзките между таблиците
+9. Типове данни
+- INT - small/int/big
 
-DECIMAL/NUMERIC - можем да кажем, до кой символ след десетичната запетая да фиксираме
+- DECIMAL/NUMERIC - можем да кажем, до кой символ след десетичната запетая да фиксираме
 
-REAL - пази по-малка точност от double
+- REAL - пази по-малка точност от double
 
-DOUBLE
+- DOUBLE
 
-SERIAL - Създава скрипт, които да инкрементира числото на всеки нов запис, оставя вратата отворена за това ние ръчно да подадем стойност;
+- SERIAL - Създава скрипт, които да инкрементира числото на всеки нов запис, оставя вратата отворена за това ние ръчно да подадем стойност;
 
-GENERATED ALWAYS AS IDENTITY - Създава скрипт, които инкрементира числото, без да ни позволява да въведем стойност ръчно
+- GENERATED ALWAYS AS IDENTITY - Създава скрипт, които инкрементира числото, без да ни позволява да въведем стойност ръчно
 
-CHAR (255 symbols)
+- CHAR (255 symbols)
 
-VARCHAR (65 535 symbols)
+- VARCHAR (65 535 symbols)
 
-TEXT (65 535 symbols)
+- TEXT (65 535 symbols)
 
-BLOB
+- BLOB
 
-DATE - дата без време - YYYY-MM-DD
+- DATE - дата без време - YYYY-MM-DD
 
-TIME - време без дата
+- TIME - време без дата
 
-TIMESTAMP - дата и час
+- TIMESTAMP - дата и час
 
-TIMESTAMPZ - дата, час и часова зона
+- TIMESTAMPZ - дата, час и часова зона
 
-CRUD - Create, Read, Update, Delete
-Извличаме данни със SELECT - READ
-Moжем да филтрираме с WHERE
+=> CRUD - Create, Read, Update, Delete
+1. Извличаме данни със SELECT - READ
+- Moжем да филтрираме с WHERE
 
-SELECT * FROM project WHERE start_date='2023-06-01';
+- SELECT * FROM project WHERE start_date='2023-06-01';
 
-ORDER BY - сортира данните
+- ORDER BY - сортира данните
 
-SELECT * FROM project ORDER BY id
-ORDER BY first_name DESC, last_name ASC;
-SELECT id as 'No.' ...;
+  - SELECT * FROM project ORDER BY id
+  - ORDER BY first_name DESC, last_name ASC;
+- SELECT id as 'No.' ...;
 
-SELECT e.id FROM employees as e;
+- SELECT e.id FROM employees as e;
 
-CONCAT() ex. SELECT CONCAT(first_name, ' ', second_name) as full_name ...;
+- CONCAT() ex. SELECT CONCAT(first_name, ' ', second_name) as full_name ...;
 
-CONCAT_WS(); конкатенира пропускайки NULL стойностите
+- CONCAT_WS(); конкатенира пропускайки NULL стойностите
 
-SELECT DISTINCT елиминира дублиращи се резултати
+- SELECT DISTINCT елиминира дублиращи се резултати
 
-WHERE; WHERE id NOT IN ...; WHERE id = 1 OR/AND ...; WHERE id IN (1, 2, 3);
+- WHERE; WHERE id NOT IN ...; WHERE id = 1 OR/AND ...; WHERE id IN (1, 2, 3);
 
-NULL != 0 != '';
+- NULL != 0 != '';
 
-WHERE id IS NULL; грешно е да пишем WHERE id = NULL;
+- WHERE id IS NULL; грешно е да пишем WHERE id = NULL;
 
-LIMIT 3; лимитираме бройката редове, които се получават;
+- LIMIT 3; лимитираме бройката редове, които се получават;
 
-OFFSET 3 LIMIT 1; прескача първите 3 реда и взима следващия 1;
+- OFFSET 3 LIMIT 1; прескача първите 3 реда и взима следващия 1;
 
-CREATE TABLE customer_contancts AS SELECT customer_id, first_name FROM customers;
+- CREATE TABLE customer_contancts AS SELECT customer_id, first_name FROM customers;
 
-Създава таблица с полетата от друга таблица и с данните;
+- Създава таблица с полетата от друга таблица и с данните;
 
-BETWEEN 1 AND 3 - ползва <= >=;
+- BETWEEN 1 AND 3 - ползва <= >=;
 
 1.1 Проекция - какви колони искамe да вземем
 
