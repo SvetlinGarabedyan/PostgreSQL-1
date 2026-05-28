@@ -1,7 +1,10 @@
-SELECT DISTINCT
-	deposit_group,
-	SUM(deposit_interest) AS deposit_interest
-	
-FROM wizard_deposits
-GROUP BY deposit_group
-ORDER BY deposit_interest DESC;
+SELECT
+	magic_wand_creator,
+	MIN(magic_wand_size) AS minimum_wand_size
+FROM
+	wizard_deposits
+GROUP BY
+	magic_wand_creator
+ORDER BY
+	minimum_wand_size
+LIMIT 5;
